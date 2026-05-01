@@ -17,7 +17,7 @@ from model.HisymGeo import HisymGeo
 
 def load_pretrain(model, pretrain_path):
     if os.path.isfile(pretrain_path):
-        checkpoint = torch.load(pretrain_path)
+        checkpoint = torch.load(pretrain_path, map_location='cpu')
         pretrained_dict = checkpoint['state_dict']
         model_dict = model.state_dict()
         pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}

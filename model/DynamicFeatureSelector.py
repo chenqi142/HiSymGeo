@@ -33,7 +33,7 @@ class GateNetwork(nn.Module):
 class DynamicFeatureSelector(nn.Module):
     def __init__(self, input_dim, num_features=4):
         super(DynamicFeatureSelector, self).__init__()
-        self.gate_network = GateNetwork(input_dim, num_features, init_index=2)
+        self.gate_network = GateNetwork(input_dim, num_features, init_index=1)
 
     def forward(self, global_features, fused_features, training=True):
         selection_mask = self.gate_network(global_features, training)

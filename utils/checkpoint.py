@@ -20,7 +20,9 @@ def save_checkpoint(state, is_best, args, filename='default'):
 
 def load_pretrain(model, args, logging):
     if os.path.isfile(args.pretrain):
-        checkpoint = torch.load(args.pretrain)
+        # Load checkpoints onto CPU first so weights saved from a different GPU
+        # topology or CUDA_VISIBLE_DEVICES mapping remain portable.
+        checkpoint = torch.load(args.pretrain, map_location='cpu')
         pretrained_dict = checkpoint['state_dict']
         model_dict = model.state_dict()
         pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
@@ -42,7 +44,7 @@ def load_resume(model, args, logging):
     if os.path.isfile(args.resume):
         print(("=> loading checkpoint '{}'".format(args.resume)))
         logging.info("=> loading checkpoint '{}'".format(args.resume))
-        checkpoint = torch.load(args.resume)
+        checkpoint = torch.load(args.resume, map_location='cpu')
         args.start_epoch = checkpoint['epoch']
         best_loss = checkpoint['best_loss']
         model.load_state_dict(checkpoint['state_dict'])

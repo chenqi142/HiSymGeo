@@ -39,8 +39,8 @@ except ImportError:
 def main():
     parser = argparse.ArgumentParser(
         description='cross-view object geo-localization')
-    parser.add_argument('--gpu', default='1,7', help='gpu id')
-    parser.add_argument('--device', default='cuda:1' if torch.cuda.is_available() else 'cpu', type=str)
+    parser.add_argument('--gpu', default='2,3', help='gpu id')
+    parser.add_argument('--device', default='cuda:2' if torch.cuda.is_available() else 'cpu', type=str)
     parser.add_argument('--num_workers', default=24, type=int, help='num workers for data loading')
 
     parser.add_argument('--max_epoch', default=25, type=int, help='training epoch')
@@ -142,7 +142,7 @@ def main():
     for i in range(torch.cuda.device_count()):
         print(f"Device {i}: {torch.cuda.get_device_name(i)}")
 
-    model = torch.nn.DataParallel(model, device_ids=[1, 7])
+    model = torch.nn.DataParallel(model, device_ids=[2, 3])
 
     if args.pretrain:
         model = load_pretrain(model, args, logging)
