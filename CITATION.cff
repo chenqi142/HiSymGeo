@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the paper below."
+type: software
+title: "HiSymGeo"
+url: "https://github.com/chenqi142/HiSymGeo"
+authors:
+  - family-names: "Chen"
+    given-names: "Cuiqun"
+  - family-names: "Chen"
+    given-names: "Qi"
+  - family-names: "Ye"
+    given-names: "Mang"
+  - family-names: "Zhang"
+    given-names: "Xingyi"
+preferred-citation:
+  type: article
+  title: "HiSymGeo: Hierarchical Context Symbiosis for Cross-View Object-Level Image Geo-Localization"
+  authors:
+    - family-names: "Chen"
+      given-names: "Cuiqun"
+    - family-names: "Chen"
+      given-names: "Qi"
+    - family-names: "Ye"
+      given-names: "Mang"
+    - family-names: "Zhang"
+      given-names: "Xingyi"
+  doi: "10.1109/TIP.2026.3700932"
+  year: 2026
+  journal: "IEEE Transactions on Image Processing"
+  volume: 35
+  start: 6401
+  end: 6415
